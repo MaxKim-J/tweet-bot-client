@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Index() {
+function DetailPage() {
   return (
     <div className="detail">
         디테일
@@ -8,4 +8,4 @@ function Index() {
   )
 }
 
-export default Index
+export default DetailPage

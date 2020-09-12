@@ -1,7 +1,7 @@
 import React from 'react'
 
 // todo 라우터 설정 +
-function Index() {
+function HomePage() {
   return (
     <div className="home">
         홈페이지
@@ -9,4 +9,4 @@ function Index() {
   )
 }
 
-export default Index
+export default HomePage
