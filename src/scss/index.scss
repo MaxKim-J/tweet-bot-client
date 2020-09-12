@@ -1,0 +1,26 @@
+/* font */
+$extra-small: 8px;
+$small: 12px;
+$medium: 16px;
+$large: 20px;
+$extra-large: 24px;
+$title-size-large:32px;
+
+/* responsive */
+@mixin mobile {
+  @media (min-width: 320px) and (max-width: 430px) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (min-width: 431px) and (max-width: 1030px) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: 1031px) {
+    @content;
+  }
+}

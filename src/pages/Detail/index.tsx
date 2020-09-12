@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Detail() {
+function Index() {
   return (
     <div className="detail">
         디테일
@@ -8,4 +8,4 @@ function Detail() {
   )
 }
 
-export default Detail
+export default Index

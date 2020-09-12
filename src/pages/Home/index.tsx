@@ -1,12 +1,12 @@
 import React from 'react'
 
 // todo 라우터 설정 +
-function NotFound() {
+function Index() {
   return (
     <div className="home">
-       404
+        홈페이지
     </div>
   )
 }
 
-export default NotFound
+export default Index

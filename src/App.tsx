@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 import RootRouter from './routes'
 
 function App() {
@@ -6,7 +6,7 @@ function App() {
     <div className="App">
         <RootRouter/>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
