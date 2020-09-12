@@ -17,6 +17,14 @@
     "react-scripts": "3.4.3",
     "typescript": "~3.7.2"
   },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^3.7.0",
+    "@typescript-eslint/parser": "^3.7.0",
+    "eslint": "^7.5.0",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-react": "^7.20.6"
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
