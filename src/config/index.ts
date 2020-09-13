@@ -24,4 +24,5 @@ export default {
   ENV: process.env.NODE_ENV,
   BASE_URL: process.env.BASE_URL,
   FOOTER_ICONS: footerIcons,
+  API_KEY: process.env.API_KEY,
 }
