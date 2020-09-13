@@ -1,0 +1,21 @@
+@import './global';
+
+section {
+  margin: 0 auto;
+  padding:0 1rem;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+}
+
+@include desktop {
+  section {
+    width:60%;
+  }
+}
+
+@include tablet {
+  section {
+    width:90%;
+  }
+}

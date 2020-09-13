@@ -1,11 +1,12 @@
 import React from 'react'
 import './_home.scss'
+import AppIntroduce from '../../components/appIntroduce'
 
 // todo 라우터 설정 +
 function HomePage() {
   return (
     <div className="home">
-        홈페이지
+        <AppIntroduce />
     </div>
   )
 }
