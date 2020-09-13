@@ -13,7 +13,7 @@
     > div {
       margin: 0 auto;
       iframe {
-        min-height: 150px !important;
+        min-height: 200px !important;
       }
     }
   }
@@ -21,7 +21,7 @@
     display: flex;
     justify-content: center;
     >a {
-      margin-right:1rem;
+      margin:0 1rem;
       img {
         width:40px;
         height:40px;

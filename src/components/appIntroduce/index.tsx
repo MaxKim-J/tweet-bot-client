@@ -12,7 +12,7 @@ function AppIntroduce() {
         <strong>4949개</strong>의 트윗이 업로드되었습니다.
       </div>
       <div className="tweet__wrapper">
-        <Tweet tweetId="1305053816803307520" />
+        <Tweet tweetId="1305146545327620096" />
       </div>
       <div className="icons__wrapper">
         <a href="https://github.com/MaxKim-J/supreme-court-API">

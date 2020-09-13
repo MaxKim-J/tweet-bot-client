@@ -1,0 +1,25 @@
+@import '../../scss/global';
+
+.list__wrapper {
+  margin-top:1rem;
+  text-align: center;
+  border-top:1px solid #e8e8e8;
+  .list-title{
+    margin-top:1rem;
+    font-size: $large;
+  }
+  .list {
+    display: flex;
+    justify-content: center;
+    > ul {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      margin:1rem 0;
+      text-align: left;
+      > li {
+        font-size:14px;
+      }
+    }
+  }
+}
