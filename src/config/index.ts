@@ -1,4 +1,5 @@
 import dotenv from 'dotenv'
+import footerIcons from './footerIcons'
 
 let path:string = ''
 
@@ -22,4 +23,5 @@ dotenv.config({ path })
 export default {
   ENV: process.env.NODE_ENV,
   BASE_URL: process.env.BASE_URL,
+  FOOTER_ICONS: footerIcons,
 }

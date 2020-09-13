@@ -1,0 +1,31 @@
+@import '../../scss/global';
+
+.footer__wrapper {
+  width:100%;
+  background-color: #f7f7f7;
+  border-top:2px solid #e8e8e8;
+  > footer {
+    padding: 2rem 0 1rem;
+    margin: 0 3rem;
+    .footer-introduce {
+      font-size:$large;
+      font-weight: 700;
+    }
+    .footer-detail {
+      > p {
+        margin-top:0.5rem;
+        font-size:$extra-small;
+      }
+      .footer-icons{
+        margin: 1rem 0;
+        display: flex;
+       > a {
+         font-size:$extra-small;
+         text-decoration: underline;
+         margin-right:0.5rem;
+        }
+      }
+    }
+
+  }
+}

@@ -1,4 +1,5 @@
 import React from 'react'
+import './_home.scss'
 
 // todo 라우터 설정 +
 function HomePage() {
