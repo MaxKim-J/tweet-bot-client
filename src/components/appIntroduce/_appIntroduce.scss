@@ -13,7 +13,7 @@
     > div {
       margin: 0 auto;
       iframe {
-        min-height: 200px !important;
+        height: 350px;
       }
     }
   }
@@ -32,7 +32,6 @@
 
 @include mobile {
   .introduce__wrapper {
-    //text-align: left;
     font-size:$small;
   }
 }
