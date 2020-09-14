@@ -29,7 +29,7 @@
     "eslint-plugin-react": "^7.20.6"
   },
   "scripts": {
-    "start": "NODE_ENV=development react-scripts start",
+    "start": "NODE_ENV=production react-scripts start",
     "build": "NODE_ENV=production react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
