@@ -22,10 +22,10 @@ function PrecedentDetail({
   return (
     <div className="detail__wrapper">
       <div>{id}</div>
+      <div>{tweetContent}</div>
       <div>{url}</div>
       <div>{type}</div>
       <div>{content}</div>
-      <div>{tweetContent}</div>
     </div>
   )
 }
