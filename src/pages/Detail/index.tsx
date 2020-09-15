@@ -12,8 +12,29 @@ interface DetailMatchProps {
 }
 
 function DetailPage({ match }:RouteComponentProps<DetailMatchProps>) {
-  const [tweetDetail, setTweetDetail] = useState()
-  const [precedentDetail, setPrecedentDetail] = useState()
+  const [
+    flattenedDetail,
+    setflattenedDetail,
+  ] = useState({
+    id: 0,
+    name: '',
+    content: '',
+    url: '',
+    type: '',
+    tweetContent: '',
+  })
+
+  const flattenPrecedentDetail = (precedent:any, tweet:any) => {
+    const {
+      precedent: {
+        content, url, type, name,
+      },
+    } = precedent
+    const { tweet: { id, content: tweetContent } } = tweet
+    return {
+      id, name, type, content, tweetContent, url,
+    }
+  }
 
   useEffect(() => {
     const fetchDetails = async (tweetId:string) => {
@@ -22,8 +43,9 @@ function DetailPage({ match }:RouteComponentProps<DetailMatchProps>) {
         data: { tweet: { precedent: { id: precedentId } } },
       } = await httpRequest.getTweetById(tweetId)
       const { data: precedentDetailData } = await httpRequest.getPrecedentById(precedentId)
-      setTweetDetail(tweetDetailData)
-      setPrecedentDetail(precedentDetailData)
+
+      const flattenedResult = flattenPrecedentDetail(precedentDetailData, tweetDetailData)
+      setflattenedDetail(flattenedResult)
     }
     const { id } = match.params
     fetchDetails(id)
@@ -31,8 +53,8 @@ function DetailPage({ match }:RouteComponentProps<DetailMatchProps>) {
 
   return (
     <div className="detail">
-        <PrecedentDetail/>
-        <List/>
+      <PrecedentDetail flattenedDetail={flattenedDetail} />
+      <List/>
     </div>
   )
 }
