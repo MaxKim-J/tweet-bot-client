@@ -13,16 +13,17 @@
     display: flex;
     justify-content: center;
     > ul {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
+      text-align: center;
       margin:1rem 0;
-      text-align: left;
       list-style-type: none;
       > li {
+        width:450px;
         font-size:12px;
         margin:0.25rem 0;
         cursor: pointer;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space:nowrap;
         &:hover {
           text-decoration: underline;
         }
@@ -37,5 +38,20 @@
       font-size:16px !important;
     }
   }
+}
 
+@include tablet {
+  .list__wrapper {
+    li {
+      width:400px !important;
+    }
+  }
+}
+
+@include mobile {
+  .list__wrapper {
+    li {
+      width:300px !important;
+    }
+  }
 }

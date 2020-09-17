@@ -1,7 +1,17 @@
 import React from 'react'
 import './_list.scss'
 
-function List() {
+interface PreviousTweetInfo {
+  id:number,
+  name:string,
+  uploadedAt:string,
+}
+
+interface PreviousTweetListProps {
+  prevTweetList : PreviousTweetInfo[]
+}
+
+function List({ prevTweetList }:PreviousTweetListProps) {
   return (
     <div className="list__wrapper">
       <div className="list-title">
@@ -9,9 +19,11 @@ function List() {
       </div>
       <div className="list">
         <ul>
-          <li>민사)대법원 2020. 5. 21. 선고 2018다287522 전원합의체 판결</li>
-          <li>민사)대법원 2020. 5. 21. 선고 2018다287522 전원합의체 판결</li>
-          <li>민사)대법원 2020. 5. 21. 선고 2018다287522 전원합의체 판결</li>
+          {prevTweetList.map((tweet, idx) => <li key={idx}>
+                <a href={`/detail/${tweet.id}`}>
+                  {idx + 1}. ({tweet.uploadedAt}) {tweet.name}
+                </a>
+              </li>)}
         </ul>
       </div>
     </div>

@@ -6,12 +6,14 @@ import {
 import List from '../../components/list'
 import PrecedentDetail from '../../components/detail'
 import httpRequest from '../../services'
+import { flattenPrecedentDetail, flattenPrevTweetList } from '../../utils/flattenHelper'
 
 interface DetailMatchProps {
   id:string
 }
 
 function DetailPage({ match }:RouteComponentProps<DetailMatchProps>) {
+  const [prevTweetList, setPrevTweetList] = useState([])
   const [
     flattenedDetail,
     setflattenedDetail,
@@ -23,18 +25,6 @@ function DetailPage({ match }:RouteComponentProps<DetailMatchProps>) {
     type: '',
     tweetContent: '',
   })
-
-  const flattenPrecedentDetail = (precedent:any, tweet:any) => {
-    const {
-      precedent: {
-        content, url, type, name,
-      },
-    } = precedent
-    const { tweet: { id, content: tweetContent } } = tweet
-    return {
-      id, name, type, content, tweetContent, url,
-    }
-  }
 
   useEffect(() => {
     const fetchDetails = async (tweetId:string) => {
@@ -51,10 +41,18 @@ function DetailPage({ match }:RouteComponentProps<DetailMatchProps>) {
     fetchDetails(id)
   }, [])
 
+  useEffect(() => {
+    const fetchPrevTweetList = async (last:number) => {
+      const { data: { tweets } } = await httpRequest.getPreviousUploadedTweets(last)
+      setPrevTweetList(flattenPrevTweetList(tweets))
+    }
+    fetchPrevTweetList(10)
+  }, [])
+
   return (
     <div className="detail">
       <PrecedentDetail flattenedDetail={flattenedDetail} />
-      <List/>
+      <List prevTweetList={prevTweetList} />
     </div>
   )
 }
