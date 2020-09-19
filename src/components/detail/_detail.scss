@@ -1,0 +1,57 @@
+@import "../../scss/global";
+
+.tweet-detail {
+
+  &__header {
+    display: flex;
+    margin-top:1rem;
+    .tweet-detail {
+      &__id{
+        color:grey
+      }
+      &__type {
+        margin-left: 1rem;
+        padding: 0 0.5rem;
+        font-weight: bold;
+      }
+    }
+  }
+  &__name {
+    font-weight: 500;
+    margin-top:1rem;
+  }
+
+  &__content {
+    margin:2rem 0;
+    background-color: whitesmoke;
+    padding: 1rem;
+  }
+  &__section {
+    margin: 2rem 0;
+    .tweet-detail {
+      &__btn {
+        cursor: pointer;
+        margin-top:0.25rem;
+        margin-bottom: 1rem;
+        &:hover{
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+
+  &__paragraph {
+    margin-bottom: 1rem;
+    color:#474747;
+    &--selected {
+      margin-bottom: 1rem;
+      color:black
+    }
+  }
+}
+
+@include mobile{
+  .tweet-detail{
+    font-size:14px;
+  }
+}

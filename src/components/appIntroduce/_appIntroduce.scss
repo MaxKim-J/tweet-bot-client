@@ -1,0 +1,38 @@
+@import '../../scss/global';
+
+.introduce__wrapper {
+  margin-top: 2rem;
+  .introduce-content {
+    text-align: center;
+    >strong {
+      font-weight: 700;
+    }
+  }
+  .tweet__wrapper {
+    margin:2rem 0;
+    min-height:350px;
+    > div {
+      margin: 0 auto;
+      iframe {
+        height: 350px;
+      }
+    }
+  }
+  .icons__wrapper {
+    display: flex;
+    justify-content: center;
+    >a {
+      margin:0 1rem;
+      img {
+        width:40px;
+        height:40px;
+      }
+    }
+  }
+}
+
+@include mobile {
+  .introduce__wrapper {
+    font-size:$small;
+  }
+}

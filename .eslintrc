@@ -1,0 +1,20 @@
+{
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint"],
+  "extends": [
+    "airbnb-base",
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:@typescript-eslint/eslint-recommended"
+  ],
+  "rules": {
+    "semi": ["error", "never"],
+    "@typescript-eslint/no-unused-vars": "off",
+    "import/no-named-as-default-member": "off",
+    "import/no-unused-vars": "off",
+    "import/no-unresolved": "off",
+    "no-unused-vars": "off",
+    "import/extensions": "off",
+    "no-empty-function": "off"
+  }
+}

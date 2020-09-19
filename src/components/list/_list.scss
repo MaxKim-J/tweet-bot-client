@@ -1,0 +1,57 @@
+@import '../../scss/global';
+
+.list__wrapper {
+  margin:1rem 0 3rem;
+  text-align: center;
+  border-top:1px solid #e8e8e8;
+  .list-title{
+    margin-top:1rem;
+    font-size: $large;
+    font-weight: 700;
+  }
+  .list {
+    display: flex;
+    justify-content: center;
+    > ul {
+      text-align: center;
+      margin:1rem 0;
+      list-style-type: none;
+      > li {
+        width:450px;
+        font-size:12px;
+        margin:0.25rem 0;
+        cursor: pointer;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space:nowrap;
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}
+
+@include desktop {
+  .list__wrapper {
+    li {
+      font-size:16px !important;
+    }
+  }
+}
+
+@include tablet {
+  .list__wrapper {
+    li {
+      width:400px !important;
+    }
+  }
+}
+
+@include mobile {
+  .list__wrapper {
+    li {
+      width:300px !important;
+    }
+  }
+}
