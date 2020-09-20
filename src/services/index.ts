@@ -5,6 +5,8 @@ const httpRequest = axios.create({
   headers: { Authorization: process.env.REACT_APP_API_KEY },
 })
 
+console.log(process.env)
+
 const getPreviousUploadedTweets = (last:number) => httpRequest.get(`/tweet/previous?last=${last}`)
 const getPrecedentById = (id:string) => httpRequest.get(`/precedent?id=${id}`)
 const getTweetById = (id:string) => httpRequest.get(`/tweet?id=${id}`)
