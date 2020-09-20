@@ -14,8 +14,8 @@ function RootRouter() {
     <BrowserRouter>
       <Suspense fallback={<div>로딩</div>}>
         <Switch>
-          <Route exact path={`${PUBLIC_URL}`} component={HomePage} />
-          <Route path={`${PUBLIC_URL}/detail/:id`} component={DetailPage} />
+          <Route exact path='/' component={HomePage} />
+          <Route path='/detail/:id' component={DetailPage} />
           <Route path="*" component={NotFoundPage} />
         </Switch>
       </Suspense>

@@ -1,6 +1,5 @@
 {
   "name": "tweet-bot-client",
-  "homepage": "https://maxkim-j.github.io/tweet-bot-client",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
