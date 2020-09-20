@@ -1,9 +1,9 @@
 import React from 'react'
+import './_notFound.scss'
 
-// todo 라우터 설정 +
 function NotFoundPage() {
   return (
-    <div className="home">
+    <div className="not-found">
        404
     </div>
   )
