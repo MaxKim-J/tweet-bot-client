@@ -5,18 +5,16 @@ import {
 
 const HomePage = React.lazy(() => import('../pages/Home/index'))
 const DetailPage = React.lazy(() => import('../pages/Detail/index'))
-const NotFoundPage = React.lazy(() => import('../pages/NotFound/index'))
 
 const {PUBLIC_URL} = process.env
 
 function RootRouter() {
   return (
     <BrowserRouter>
-      <Suspense fallback={<div>로딩</div>}>
+      <Suspense fallback={<div></div>}>
         <Switch>
           <Route exact path={`${PUBLIC_URL}/`} component={HomePage} />
           <Route path={`${PUBLIC_URL}/detail/:id`} component={DetailPage} />
-          <Route path="*" component={NotFoundPage} />
         </Switch>
       </Suspense>
     </BrowserRouter>
