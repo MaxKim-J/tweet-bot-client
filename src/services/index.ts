@@ -5,12 +5,14 @@ const httpRequest = axios.create({
   headers: { Authorization: process.env.REACT_APP_API_KEY },
 })
 
+const getAllPreviousUploadedTweets = () => httpRequest.get(`/tweet/previous`)
 const getPreviousUploadedTweets = (last:number) => httpRequest.get(`/tweet/previous?last=${last}`)
 const getPrecedentById = (id:string) => httpRequest.get(`/precedent?id=${id}`)
 const getTweetById = (id:string) => httpRequest.get(`/tweet?id=${id}`)
 const getPrecedents = () => httpRequest.get('/precedent')
 
 export default {
+  getAllPreviousUploadedTweets,
   getPreviousUploadedTweets,
   getPrecedentById,
   getTweetById,

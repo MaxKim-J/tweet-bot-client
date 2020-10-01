@@ -3,16 +3,17 @@ import './_appIntroduce.scss'
 import { Tweet } from 'react-twitter-widgets'
 
 interface AppIntroduceProps {
-  uploadedTweetCount:number
+  uploadedTweetCount:number,
+  precedentCount:number,
 }
 
-function AppIntroduce({ uploadedTweetCount }:AppIntroduceProps) {
+function AppIntroduce({ uploadedTweetCount, precedentCount }:AppIntroduceProps) {
   return (
     <div className="introduce__wrapper">
       <div className="introduce-content">
         <a href="https://glaw.scourt.go.kr/wsjo/intesrch/sjo022.do">법원 종합법률정보</a>의 대법원 공개판례를 트윗하는 봇입니다.
         <br/>현재&nbsp;
-        <strong>511개</strong>의 판례를 바탕으로&nbsp;
+        <strong>{precedentCount}개</strong>의 판례를 바탕으로&nbsp;
         <strong>{uploadedTweetCount}개</strong>의 트윗이 업로드되었습니다.
       </div>
       <div className="tweet__wrapper">
