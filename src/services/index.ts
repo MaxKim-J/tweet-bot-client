@@ -1,5 +1,11 @@
 import axios from 'axios'
 
+export type HttpRequestType<P extends any, R> = (p:P) => Promise<R>
+export type HttpRequestParamsType<T> = {
+  id?:T,
+  last?:T,
+}
+
 const httpRequest = axios.create({
   baseURL: process.env.REACT_APP_BASE_URL,
   headers: { Authorization: process.env.REACT_APP_API_KEY },

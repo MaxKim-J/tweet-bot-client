@@ -3,6 +3,8 @@ export const flattenPrevTweetList = (tweetList:any) => tweetList.map((tweet:any)
   return { id, name, uploadedAt: uploadedAt.slice(0, 10) }
 })
 
+export type TweetListType = ReturnType<typeof flattenPrevTweetList>
+
 export const flattenPrecedentDetail = (precedent:any, tweet:any) => {
   const {
     precedent: {
@@ -14,3 +16,6 @@ export const flattenPrecedentDetail = (precedent:any, tweet:any) => {
     id, name, type, content, tweetContent, url,
   }
 }
+
+export type precedentDetailType = ReturnType<typeof flattenPrecedentDetail>
+
