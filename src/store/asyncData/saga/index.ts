@@ -1,14 +1,17 @@
-import { put, takeEvery } from 'redux-saga/effects'
+import { put, takeEvery, select } from 'redux-saga/effects'
 import httpRequest from "../../../services"
 import {flattenPrecedentDetail, flattenPrevTweetList} from '../../../utils/flattenHelper'
 import {fetchPreviousTweets, fetchPrecedentDetail} from "../index";
 
 
 function* fetchAppData() {
-  const {data:{counts:precedentCounts}} = yield httpRequest.getPrecedents()
-  yield put({type:'asyncData/UPDATE_PRECEDENT_COUNT', payload:precedentCounts})
-  const {data:{counts}} =  yield httpRequest.getAllPreviousUploadedTweets()
-  yield put({type:'asyncData/UPDATE_PRECEDENT_COUNT', payload:counts})
+  const tweetCount = yield select(state => state.asyncData.previousTweetCount)
+  if(!tweetCount) {
+    const {data:{counts:precedentCounts}} = yield httpRequest.getPrecedents()
+    yield put({type:'asyncData/UPDATE_PRECEDENT_COUNT', payload:precedentCounts})
+    const {data:{counts}} =  yield httpRequest.getAllPreviousUploadedTweets()
+    yield put({type:'asyncData/UPDATE_PREVIOUS_TWEET_COUNT', payload:counts})
+  }
 }
 
 function* fetchPrecedentDetailAsync(action:ReturnType<typeof fetchPrecedentDetail>) {

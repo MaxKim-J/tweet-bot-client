@@ -1,12 +1,14 @@
 import React from 'react'
 import './_header.scss'
+import {Link} from "react-router-dom";
+
 
 function Header() {
   return (
     <header>
-      <a href="/">
+      <Link to={'/'}>
         <div className="header-title">판례요지봇</div>
-      </a>
+      </Link>
     </header>
   )
 }

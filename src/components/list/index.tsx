@@ -1,5 +1,6 @@
 import React from 'react'
 import './_list.scss'
+import {Link} from "react-router-dom";
 
 interface PreviousTweetInfo {
   id:number,
@@ -20,9 +21,9 @@ function List({ prevTweetList }:PreviousTweetListProps) {
       <div className="list">
         <ul>
           {prevTweetList.map((tweet, idx) => <li key={idx}>
-                <a href={`/detail/${tweet.id}`}>
+                <Link to={`/detail/${tweet.id}`}>
                   {idx + 1}. ({tweet.uploadedAt}) {tweet.name}
-                </a>
+                </Link>
               </li>)}
         </ul>
       </div>
