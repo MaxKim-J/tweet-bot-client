@@ -30,23 +30,26 @@ type asyncDataAction = ReturnType<typeof updatePrecedentCount>
 const initialState = {
   precedentCount:0,
   previousTweetCount:0,
-  precedentDetail:{},
+  precedentDetail:{
+    id:0,
+    name:'',
+    type:'',
+    content:'',
+    tweetContent:'',
+    url:''
+  },
   previousTweets:[],
 }
 
 const reducer = (state=initialState, action:asyncDataAction) => {
   switch(action.type) {
     case "asyncData/UPDATE_PRECEDENT_COUNT":
-      console.log('판례 카운트 업뎃')
       return {...state, precedentCount: action.payload}
     case "asyncData/UPDATE_PREVIOUS_TWEET_COUNT":
-      console.log('트윗 카운트 업뎃')
       return {...state, previousTweetCount: action.payload}
     case "asyncData/UPDATE_PREVIOUS_TWEETS":
-      console.log('이전 트윗 업뎃')
       return {...state, previousTweets: action.payload}
     case "asyncData/UPDATE_PRECEDENT_DETAIL":
-      console.log('디테일 업뎃')
       return {...state, precedentDetail: action.payload}
     default:
       return state

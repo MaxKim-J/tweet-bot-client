@@ -26,9 +26,12 @@ function* fetchPrecedentDetailAsync(action:ReturnType<typeof fetchPrecedentDetai
 }
 
 function* fetchPreviousTweetsAsync(action:ReturnType<typeof fetchPreviousTweets>) {
-  const last = action.payload
-  const { data: { tweets } } = yield httpRequest.getPreviousUploadedTweets(last)
-  yield put({type:"asyncData/UPDATE_PREVIOUS_TWEETS", payload:flattenPrevTweetList(tweets)})
+  const {length:prevTweetLength} = yield select(state => state.asyncData.previousTweets)
+  if(!prevTweetLength) {
+    const last = action.payload
+    const { data: { tweets } } = yield httpRequest.getPreviousUploadedTweets(last)
+    yield put({type:"asyncData/UPDATE_PREVIOUS_TWEETS", payload:flattenPrevTweetList(tweets)})
+  }
 }
 
 export default function* asyncDataSaga() {

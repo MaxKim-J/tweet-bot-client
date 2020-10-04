@@ -21,9 +21,7 @@ function HomePage() {
     uploadedTweetCount:state.asyncData.previousTweetCount,
     precedentCount:state.asyncData.precedentCount,
     prevTweetList:state.asyncData.previousTweets
-  }),
-    shallowEqual
-  )
+  }), shallowEqual)
 
   return (
     <>
