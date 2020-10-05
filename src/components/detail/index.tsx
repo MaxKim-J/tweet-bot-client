@@ -46,7 +46,7 @@ function PrecedentDetail({
     const parsedResults = parseContent(content)
     setParsedPrecedent(parsedResults)
     if(isAllPrecedentShow) {setIsAllPrecedentShow(false)}
-  }, [content, isAllPrecedentShow, parseContent])
+  }, [parseContent, content])
 
   useEffect(() => {
     setTypeInfo(precedentTypeFilter(type))
