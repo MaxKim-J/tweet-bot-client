@@ -1,0 +1,14 @@
+.loading {
+  width:100vw;
+  height:100vh;
+  background-color: black;
+  color: white;
+  opacity: 0.5;
+  z-index: 2000;
+  position: fixed;
+  top:0;
+  left:0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

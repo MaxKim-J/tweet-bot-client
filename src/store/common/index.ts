@@ -17,8 +17,10 @@ const initialState = {
 const reducer = (state=initialState, action:fetchAction) => {
   switch(action.type) {
     case "common/FETCH_REQUEST":
+      console.log('로딩')
       return {...state, fetchStatus:'loading'}
     case "common/FETCH_SUCCESS":
+      console.log('완료')
       return {...state, fetchStatus:'completed'}
     case "common/FETCH_FAILURE":
       return {...state, fetchStatus:'completed'}

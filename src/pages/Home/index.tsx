@@ -7,16 +7,15 @@ import {fetchAppInfo, fetchPreviousTweets} from "../../store/asyncData";
 import {fetchRequest, fetchSuccess, fetchFailure} from "../../store/common";
 import {useSelector} from "react-redux";
 import {RootState} from "../../store";
+import Loading from "../../components/loading"
 
 function HomePage() {
   const dispatch = useDispatch()
 
   useEffect(() => {
     try {
-      dispatch(fetchRequest())
       dispatch(fetchPreviousTweets(10))
       dispatch(fetchAppInfo())
-      dispatch(fetchSuccess())
     } catch(e) {
       dispatch(fetchFailure())
     }
@@ -31,10 +30,17 @@ function HomePage() {
 
   return (
     <>
-      {fetchStatus === 'completed' && <div className="home">
-        <AppIntroduce uploadedTweetCount={uploadedTweetCount} precedentCount={precedentCount} />
-        <List prevTweetList={prevTweetList} />
-      </div>}
+      {
+        fetchStatus === 'completed'
+          ? <div className="home">
+              <AppIntroduce
+                uploadedTweetCount={uploadedTweetCount}
+                precedentCount={precedentCount}
+              />
+              <List prevTweetList={prevTweetList} />
+          </div>
+          :<Loading/>
+      }
     </>
   )
 }
