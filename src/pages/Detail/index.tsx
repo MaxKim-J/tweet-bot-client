@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import './_detail.scss'
 import {
   RouteComponentProps,
@@ -7,7 +7,6 @@ import List from '../../components/list'
 import PrecedentDetail from '../../components/detail'
 import {shallowEqual, useDispatch, useSelector} from 'react-redux'
 import {fetchPrecedentDetail, fetchPreviousTweets} from "../../store/asyncData";
-import {fetchRequest, fetchSuccess, fetchFailure} from "../../store/common";
 import {RootState} from "../../store";
 import Loading from "../../components/loading"
 
@@ -24,7 +23,7 @@ function DetailPage({ match }:RouteComponentProps<DetailMatchProps>) {
     const { id } = match.params
     dispatch(fetchPrecedentDetail(id))
     dispatch(fetchPreviousTweets(10))
-  }, [match.params])
+  }, [match.params, dispatch])
 
   const {precedentDetail, prevTweetList, fetchStatus} = useSelector((state:RootState) => ({
     precedentDetail:state.asyncData.precedentDetail,

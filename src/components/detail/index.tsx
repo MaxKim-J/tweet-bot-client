@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, {useCallback, useEffect, useState} from 'react'
 import precedentTypeFilter from '../../utils/precedentTypeFilter'
 import './_detail.scss'
 
@@ -32,7 +32,7 @@ function PrecedentDetail({
     setIsAllPrecedentShow(!isAllPrecedentShow)
   }
 
-  const parseContent = (article:string):string[] => {
+  const parseContent = useCallback((article:string):string[] => {
     const parsedResults = article.split('<br>')
     parsedResults.forEach((result, idx) => {
       if (result === tweetContent) {
@@ -40,13 +40,13 @@ function PrecedentDetail({
       }
     })
     return parsedResults
-  }
+  },[tweetContent])
 
   useEffect(() => {
     const parsedResults = parseContent(content)
     setParsedPrecedent(parsedResults)
     if(isAllPrecedentShow) {setIsAllPrecedentShow(false)}
-  }, [content])
+  }, [content, isAllPrecedentShow, parseContent])
 
   useEffect(() => {
     setTypeInfo(precedentTypeFilter(type))
