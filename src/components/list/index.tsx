@@ -1,6 +1,6 @@
 import React from 'react'
 import './_list.scss'
-import {Link} from "react-router-dom";
+import { Link } from 'react-router-dom'
 
 interface PreviousTweetInfo {
   id:number,

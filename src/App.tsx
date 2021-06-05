@@ -2,7 +2,7 @@ import React from 'react'
 import RootRouter from './routes'
 import './scss/_initialize.scss'
 import './scss/_app.scss'
-import Footer from "./components/footer";
+import Footer from './components/footer'
 
 function App() {
   return (

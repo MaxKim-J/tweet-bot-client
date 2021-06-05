@@ -1,4 +1,4 @@
-import React, {useCallback, useEffect, useState} from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import precedentTypeFilter from '../../utils/precedentTypeFilter'
 import './_detail.scss'
 
@@ -40,12 +40,12 @@ function PrecedentDetail({
       }
     })
     return parsedResults
-  },[tweetContent])
+  }, [tweetContent])
 
   useEffect(() => {
     const parsedResults = parseContent(content)
     setParsedPrecedent(parsedResults)
-    if(isAllPrecedentShow) {setIsAllPrecedentShow(false)}
+    if (isAllPrecedentShow) { setIsAllPrecedentShow(false) }
   }, [parseContent, content])
 
   useEffect(() => {

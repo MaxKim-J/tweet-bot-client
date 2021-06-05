@@ -8,7 +8,6 @@ const HomePage = React.lazy(() => import('../pages/Home/index'))
 const DetailPage = React.lazy(() => import('../pages/Detail/index'))
 const NotFoundPage = React.lazy(() => import('../pages/NotFound/index'))
 
-
 function RootRouter() {
   return (
     <BrowserRouter>
