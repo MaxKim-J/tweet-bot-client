@@ -1,12 +1,7 @@
 import React from 'react'
 import './_list.scss'
 import { Link } from 'react-router-dom'
-
-interface PreviousTweetInfo {
-  id:number,
-  name:string,
-  uploadedAt:string,
-}
+import { PreviousTweetInfo } from '../../store/tweets/types'
 
 interface PreviousTweetListProps {
   prevTweetList : PreviousTweetInfo[]

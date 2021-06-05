@@ -1,18 +1,10 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import precedentTypeFilter from '../../utils/precedentTypeFilter'
 import './_detail.scss'
+import { PrecedentDetailType } from '../../store/precedent/types'
 
-interface precedentDetail {
-  id:number,
-  name:string,
-  type:string,
-  content:string,
-  tweetContent:string,
-  url:string
-}
-
-interface PrecedentDetailProps{
-  flattenedDetail:precedentDetail
+type PrecedentDetailProps = {
+  flattenedDetail:PrecedentDetailType
 }
 
 function PrecedentDetail({
@@ -46,7 +38,7 @@ function PrecedentDetail({
     const parsedResults = parseContent(content)
     setParsedPrecedent(parsedResults)
     if (isAllPrecedentShow) { setIsAllPrecedentShow(false) }
-  }, [parseContent, content])
+  }, [parseContent, content, isAllPrecedentShow])
 
   useEffect(() => {
     setTypeInfo(precedentTypeFilter(type))

@@ -6,7 +6,11 @@ import {
 import { shallowEqual, useDispatch, useSelector } from 'react-redux'
 import List from '../../components/list'
 import PrecedentDetail from '../../components/detail'
-import { fetchPrecedentDetail, fetchPreviousTweets } from '../../store/asyncData'
+import { tweetsActions } from '../../store/tweets'
+import { precedentActions } from '../../store/precedent'
+import { PrecedentDetailType } from '../../store/precedent/types'
+import { PreviousTweetInfo } from '../../store/tweets/types'
+
 import { RootState } from '../../store'
 import Loading from '../../components/loading'
 
@@ -20,23 +24,27 @@ function DetailPage({ match }:RouteComponentProps<DetailMatchProps>) {
   useEffect(() => {
     window.scrollTo(0, 0)
     const { id } = match.params
-    dispatch(fetchPrecedentDetail(id))
-    dispatch(fetchPreviousTweets(10))
+    dispatch(precedentActions.fetchDetail(id))
+    dispatch(tweetsActions.fetchPreviousTweet(10))
   }, [match.params, dispatch])
 
-  const { precedentDetail, prevTweetList, fetchStatus } = useSelector((state:RootState) => ({
-    precedentDetail: state.asyncData.precedentDetail,
-    prevTweetList: state.asyncData.previousTweets,
-    fetchStatus: state.common.fetchStatus,
+  const { precedentDetail, prevTweetList } = useSelector((state:RootState) => ({
+    precedentDetail: state.precedent.detail.data,
+    prevTweetList: state.tweets.tweets.data,
+  }), shallowEqual)
+
+  const { precedentStatus, prevTweetStatus } = useSelector((state:RootState) => ({
+    precedentStatus: state.precedent.detail.status,
+    prevTweetStatus: state.tweets.tweets.status,
   }), shallowEqual)
 
   return (
     <>
       {
-        fetchStatus === 'completed'
+        precedentStatus === 'success' && prevTweetStatus === 'success'
           ? <div className="detail">
-          <PrecedentDetail flattenedDetail={precedentDetail} />
-          <List prevTweetList={prevTweetList} />
+          <PrecedentDetail flattenedDetail={precedentDetail as PrecedentDetailType} />
+          <List prevTweetList={prevTweetList as PreviousTweetInfo[]} />
         </div>
           : <Loading/>
       }

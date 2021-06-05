@@ -4,37 +4,45 @@ import { shallowEqual, useDispatch, useSelector } from 'react-redux'
 
 import AppIntroduce from '../../components/appIntroduce'
 import List from '../../components/list'
-import { fetchAppInfo, fetchPreviousTweets } from '../../store/asyncData'
+import { tweetsActions } from '../../store/tweets'
+import { countsActions } from '../../store/counts'
 import { RootState } from '../../store'
 import Loading from '../../components/loading'
+import { PreviousTweetInfo } from '../../store/tweets/types'
 
 function HomePage() {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(fetchPreviousTweets(10))
-    dispatch(fetchAppInfo())
+    dispatch(tweetsActions.fetchPreviousTweet(10))
+    dispatch(countsActions.fetchCounts())
   }, [dispatch])
 
   const {
-    uploadedTweetCount, precedentCount, prevTweetList, fetchStatus,
+    uploadedTweetCount, precedentCount, prevTweetList,
   } = useSelector((state:RootState) => ({
-    uploadedTweetCount: state.asyncData.previousTweetCount,
-    precedentCount: state.asyncData.precedentCount,
-    prevTweetList: state.asyncData.previousTweets,
-    fetchStatus: state.common.fetchStatus,
+    uploadedTweetCount: state.counts.counts.data.tweet,
+    precedentCount: state.counts.counts.data.precedent,
+    prevTweetList: state.tweets.tweets.data,
+  }), shallowEqual)
+
+  const {
+    countsStatus, tweetStatus,
+  } = useSelector((state:RootState) => ({
+    countsStatus: state.counts.counts.status,
+    tweetStatus: state.tweets.tweets.status,
   }), shallowEqual)
 
   return (
     <>
       {
-        fetchStatus === 'completed'
+        countsStatus === 'success' && tweetStatus === 'success'
           ? <div className="home">
               <AppIntroduce
                 uploadedTweetCount={uploadedTweetCount}
                 precedentCount={precedentCount}
               />
-              <List prevTweetList={prevTweetList} />
+              <List prevTweetList={prevTweetList as PreviousTweetInfo[]} />
           </div>
           : <Loading/>
       }
