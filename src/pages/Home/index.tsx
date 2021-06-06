@@ -13,11 +13,6 @@ import { PreviousTweetInfo } from '../../store/tweets/types'
 function HomePage() {
   const dispatch = useDispatch()
 
-  useEffect(() => {
-    dispatch(tweetsActions.fetchPreviousTweet(10))
-    dispatch(countsActions.fetchCounts())
-  }, [dispatch])
-
   const {
     uploadedTweetCount, precedentCount, prevTweetList,
   } = useSelector((state:RootState) => ({
@@ -32,6 +27,16 @@ function HomePage() {
     countsStatus: state.counts.counts.status,
     tweetStatus: state.tweets.tweets.status,
   }), shallowEqual)
+
+  useEffect(() => {
+    if (!prevTweetList?.length) {
+      dispatch(tweetsActions.fetchPreviousTweet(10))
+    }
+
+    if (!precedentCount && !uploadedTweetCount) {
+      dispatch(countsActions.fetchCounts())
+    }
+  }, [dispatch, precedentCount, prevTweetList])
 
   return (
     <>

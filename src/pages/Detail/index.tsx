@@ -21,13 +21,6 @@ interface DetailMatchProps {
 function DetailPage({ match }:RouteComponentProps<DetailMatchProps>) {
   const dispatch = useDispatch()
 
-  useEffect(() => {
-    window.scrollTo(0, 0)
-    const { id } = match.params
-    dispatch(precedentActions.fetchDetail(id))
-    dispatch(tweetsActions.fetchPreviousTweet(10))
-  }, [match.params, dispatch])
-
   const { precedentDetail, prevTweetList } = useSelector((state:RootState) => ({
     precedentDetail: state.precedent.detail.data,
     prevTweetList: state.tweets.tweets.data,
@@ -38,10 +31,21 @@ function DetailPage({ match }:RouteComponentProps<DetailMatchProps>) {
     prevTweetStatus: state.tweets.tweets.status,
   }), shallowEqual)
 
+  useEffect(() => {
+    window.scrollTo(0, 0)
+    const { id } = match.params
+    dispatch(precedentActions.fetchDetail(id))
+    if (!prevTweetList?.length) {
+      dispatch(tweetsActions.fetchPreviousTweet(10))
+    }
+  }, [match.params, dispatch, prevTweetList])
+
+  const isMatchedPrecedent = match.params.id === `${precedentDetail?.id}`
+
   return (
     <>
       {
-        precedentStatus === 'success' && prevTweetStatus === 'success'
+        precedentStatus === 'success' && prevTweetStatus === 'success' && isMatchedPrecedent
           ? <div className="detail">
           <PrecedentDetail flattenedDetail={precedentDetail as PrecedentDetailType} />
           <List prevTweetList={prevTweetList as PreviousTweetInfo[]} />

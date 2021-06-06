@@ -4,7 +4,6 @@
 
 ## 스택
 - React.js + Typescript
-- Redux + Redux Saga
+- Redux + Redux Toolkit + Redux Saga
 - SCSS
-- Reactstrap
-- github pages
+- vercel(배포)
