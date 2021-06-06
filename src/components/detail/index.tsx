@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react'
+import React, { useMemo, useState } from 'react'
 import precedentTypeFilter from '../../utils/precedentTypeFilter'
 import './_detail.scss'
 import { PrecedentDetailType } from '../../store/precedent/types'
@@ -14,37 +14,25 @@ function PrecedentDetail({
 }:PrecedentDetailProps) {
   const [isAllPrecedentShow, setIsAllPrecedentShow] = useState(false)
   const [tweetContentOrderNum, setTweetContentOrderNum] = useState(0)
-  const [parsedPrecedent, setParsedPrecedent] = useState<string[]>([])
-  const [typeInfo, setTypeInfo] = useState({
-    typeName: '',
-    typeColor: '',
-  })
 
-  const handleBtnClick = () => {
-    setIsAllPrecedentShow(!isAllPrecedentShow)
-  }
-
-  const parseContent = useCallback((article:string):string[] => {
-    const parsedResults = article.split('<br>')
+  const parsedPrecedent = useMemo(() => {
+    const parsedResults = content.split('<br>')
     parsedResults.forEach((result, idx) => {
       if (result === tweetContent) {
         setTweetContentOrderNum(idx)
       }
     })
     return parsedResults
-  }, [tweetContent])
+  }, [content, tweetContent])
 
-  useEffect(() => {
-    const parsedResults = parseContent(content)
-    setParsedPrecedent(parsedResults)
-    if (isAllPrecedentShow) { setIsAllPrecedentShow(false) }
-  }, [parseContent, content, isAllPrecedentShow])
+  const typeInfo = useMemo(() => precedentTypeFilter(type), [type])
 
-  useEffect(() => {
-    setTypeInfo(precedentTypeFilter(type))
-  }, [type])
+  const handleBtnClick = () => {
+    setIsAllPrecedentShow((isShow) => !isShow)
+  }
 
   const { typeName, typeColor } = typeInfo
+
   return (
       <div className="tweet-detail">
         <div className="tweet-detail__header">
