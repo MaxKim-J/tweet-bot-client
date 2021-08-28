@@ -1,8 +1,6 @@
 import React, { useEffect } from 'react'
 import './_detail.scss'
-import {
-  RouteComponentProps,
-} from 'react-router-dom'
+import { RouteComponentProps } from 'react-router-dom'
 import { shallowEqual, useDispatch, useSelector } from 'react-redux'
 import List from '../../components/list'
 import PrecedentDetail from '../../components/detail'
@@ -15,21 +13,27 @@ import { RootState } from '../../store'
 import Loading from '../../components/loading'
 
 interface DetailMatchProps {
-  id:string
+  id: string
 }
 
-function DetailPage({ match }:RouteComponentProps<DetailMatchProps>) {
+function DetailPage({ match }: RouteComponentProps<DetailMatchProps>) {
   const dispatch = useDispatch()
 
-  const { precedentDetail, prevTweetList } = useSelector((state:RootState) => ({
-    precedentDetail: state.precedent.detail.data,
-    prevTweetList: state.tweets.tweets.data,
-  }), shallowEqual)
+  const { precedentDetail, prevTweetList } = useSelector(
+    (state: RootState) => ({
+      precedentDetail: state.precedent.detail.data,
+      prevTweetList: state.tweets.tweets.data,
+    }),
+    shallowEqual,
+  )
 
-  const { precedentStatus, prevTweetStatus } = useSelector((state:RootState) => ({
-    precedentStatus: state.precedent.detail.status,
-    prevTweetStatus: state.tweets.tweets.status,
-  }), shallowEqual)
+  const { precedentStatus, prevTweetStatus } = useSelector(
+    (state: RootState) => ({
+      precedentStatus: state.precedent.detail.status,
+      prevTweetStatus: state.tweets.tweets.status,
+    }),
+    shallowEqual,
+  )
 
   useEffect(() => {
     window.scrollTo(0, 0)
@@ -45,14 +49,18 @@ function DetailPage({ match }:RouteComponentProps<DetailMatchProps>) {
 
   return (
     <>
-      {
-        precedentStatus === 'success' && prevTweetStatus === 'success' && isMatchedPrecedent
-          ? <div className="detail">
-          <PrecedentDetail flattenedDetail={precedentDetail as PrecedentDetailType} />
+      {precedentStatus === 'success' &&
+      prevTweetStatus === 'success' &&
+      isMatchedPrecedent ? (
+        <div className="detail">
+          <PrecedentDetail
+            flattenedDetail={precedentDetail as PrecedentDetailType}
+          />
           <List prevTweetList={prevTweetList as PreviousTweetInfo[]} />
         </div>
-          : <Loading/>
-      }
+      ) : (
+        <Loading />
+      )}
     </>
   )
 }

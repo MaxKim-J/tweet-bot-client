@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react'
 import './_home.scss'
 import { shallowEqual, useDispatch, useSelector } from 'react-redux'
-
 import AppIntroduce from '../../components/appIntroduce'
 import List from '../../components/list'
 import { tweetsActions } from '../../store/tweets'

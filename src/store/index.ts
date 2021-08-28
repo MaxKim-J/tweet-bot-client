@@ -13,12 +13,7 @@ import tweetsSaga from './tweets/saga'
 const sagaMiddleware = createSagaMiddleware()
 
 export function* rootSaga() {
-  yield all([
-    fork(precedentSaga),
-    fork(tweetsSaga),
-    fork(countsSaga),
-    fork(tweetsSaga),
-  ])
+  yield all([fork(precedentSaga), fork(tweetsSaga), fork(countsSaga)])
 }
 
 const reducer = combineReducers({

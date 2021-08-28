@@ -9,11 +9,15 @@
   ],
   "rules": {
     "semi": ["error", "never"],
-    "@typescript-eslint/no-unused-vars": [2, {"args":"none"}],
+    "@typescript-eslint/no-unused-vars": [2, { "args": "none" }],
     "import/no-named-as-default-member": "off",
     "import/extensions": "off",
     "no-empty-function": "off",
     "import/no-unresolved": "off",
-    "no-param-reassign": "off"
+    "no-param-reassign": "off",
+    "indent": "off",
+    "operator-linebreak": "off",
+    "object-curly-newline": "off",
+    "implicit-arrow-linebreak": "off"
   }
 }
