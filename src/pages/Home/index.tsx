@@ -13,20 +13,22 @@ import { PreviousTweetInfo } from '../../store/tweets/types'
 function HomePage() {
   const dispatch = useDispatch()
 
-  const {
-    uploadedTweetCount, precedentCount, prevTweetList,
-  } = useSelector((state:RootState) => ({
-    uploadedTweetCount: state.counts.counts.data.tweet,
-    precedentCount: state.counts.counts.data.precedent,
-    prevTweetList: state.tweets.tweets.data,
-  }), shallowEqual)
+  const { uploadedTweetCount, precedentCount, prevTweetList } = useSelector(
+    (state: RootState) => ({
+      uploadedTweetCount: state.counts.counts.data.tweet,
+      precedentCount: state.counts.counts.data.precedent,
+      prevTweetList: state.tweets.tweets.data,
+    }),
+    shallowEqual,
+  )
 
-  const {
-    countsStatus, tweetStatus,
-  } = useSelector((state:RootState) => ({
-    countsStatus: state.counts.counts.status,
-    tweetStatus: state.tweets.tweets.status,
-  }), shallowEqual)
+  const { countsStatus, tweetStatus } = useSelector(
+    (state: RootState) => ({
+      countsStatus: state.counts.counts.status,
+      tweetStatus: state.tweets.tweets.status,
+    }),
+    shallowEqual,
+  )
 
   useEffect(() => {
     if (!prevTweetList?.length) {
@@ -36,21 +38,21 @@ function HomePage() {
     if (!precedentCount && !uploadedTweetCount) {
       dispatch(countsActions.fetchCounts())
     }
-  }, [dispatch, precedentCount, prevTweetList])
+  }, [])
 
   return (
     <>
-      {
-        countsStatus === 'success' && tweetStatus === 'success'
-          ? <div className="home">
-              <AppIntroduce
-                uploadedTweetCount={uploadedTweetCount}
-                precedentCount={precedentCount}
-              />
-              <List prevTweetList={prevTweetList as PreviousTweetInfo[]} />
-          </div>
-          : <Loading/>
-      }
+      {countsStatus === 'success' && tweetStatus === 'success' ? (
+        <div className="home">
+          <AppIntroduce
+            uploadedTweetCount={uploadedTweetCount}
+            precedentCount={precedentCount}
+          />
+          <List prevTweetList={prevTweetList as PreviousTweetInfo[]} />
+        </div>
+      ) : (
+        <Loading />
+      )}
     </>
   )
 }

@@ -35,10 +35,11 @@ function DetailPage({ match }:RouteComponentProps<DetailMatchProps>) {
     window.scrollTo(0, 0)
     const { id } = match.params
     dispatch(precedentActions.fetchDetail(id))
+
     if (!prevTweetList?.length) {
       dispatch(tweetsActions.fetchPreviousTweet(10))
     }
-  }, [match.params, dispatch, prevTweetList])
+  }, [match.params])
 
   const isMatchedPrecedent = match.params.id === `${precedentDetail?.id}`
 
